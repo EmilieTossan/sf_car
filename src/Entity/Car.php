@@ -25,6 +25,12 @@ class Car
     #[ORM\Column(type: 'text')]
     private $description;
 
+    #[ORM\ManyToOne(targetEntity: Brand::class, inversedBy: 'cars')]
+    private $brand;
+
+    #[ORM\ManyToOne(targetEntity: Groupe::class, inversedBy: 'cars')]
+    private $groupe;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +80,30 @@ class Car
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getBrand(): ?Brand
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(?Brand $brand): self
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    public function getGroupe(): ?Groupe
+    {
+        return $this->groupe;
+    }
+
+    public function setGroupe(?Groupe $groupe): self
+    {
+        $this->groupe = $groupe;
 
         return $this;
     }
