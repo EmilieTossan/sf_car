@@ -83,4 +83,14 @@ class AdminCarController extends AbstractController
         $entityManagerInterface->flush();
         return $this->redirectToRoute("admin_car_list");
     }
+
+    /**
+     * @Route("admin/search", name="admin_search")
+     */
+    public function adminSearch(Request $request, CarRepository $carRepository)
+    {
+        $term = $request->query->get('term');
+        $cars = $carRepository->searchByTerm($term);
+        return $this->render('admin/search.html.twig', ['cars' => $cars, 'term' => $term]);
+    }
 }

@@ -1,0 +1,13 @@
+{% extends "admin/base.html.twig" %}
+
+{% block main %}
+
+<p>Résultats de la recherche "{{ term }}"</p>
+
+{% for car in cars %}
+
+<p>{{ car.name }} {{ car.year }} {{ car.engine }} {{ car.brand.name }} {{ car.brand.country }} {{ car.groupe.name }} {{ car.groupe.country }}</p>
+    
+{% endfor %}
+
+{% endblock %}
