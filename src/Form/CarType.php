@@ -3,9 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Car;
+use App\Entity\Brand;
+use App\Entity\Groupe;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class CarType extends AbstractType
 {
@@ -16,9 +20,15 @@ class CarType extends AbstractType
             ->add('year')
             ->add('engine')
             ->add('description')
-            ->add('brand')
-            ->add('groupe')
-        ;
+            ->add('brand', EntityType::class, [
+                'class' => Brand::class,
+                'choice_label' => 'name'
+            ])
+            ->add('groupe', EntityType::class, [
+                'class' => Groupe::class,
+                'choice_label' => 'name'
+            ])
+            ->add('Enregistrer', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

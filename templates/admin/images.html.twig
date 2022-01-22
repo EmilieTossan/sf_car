@@ -1,0 +1,14 @@
+{% extends "admin/base.html.twig" %}
+
+{% block title %}Images{% endblock %}
+
+{% block main %}
+
+{% for image in images %}
+    
+<p>{{ image.title }}</p>
+<img src="{{ asset('images/' ~ image.src )}}" alt="{{ image.alt }}" title="{{ image.title }}">
+
+{% endfor %}
+
+{% endblock %}
