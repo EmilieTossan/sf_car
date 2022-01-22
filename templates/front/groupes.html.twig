@@ -1,0 +1,15 @@
+{% extends "front/base.html.twig" %}
+
+{% block title %}{{ groupe.name }} {{ groupe.country }}{% endblock %}
+
+{% block main %}
+
+{% for groupe in groupes %}
+
+<p>
+    <a href="{{ path("show_groupe", {'id' : groupe.id}) }}">{{ groupe.name }} {{ groupe.country }}</a>
+</p>
+
+{% endfor %}
+
+{% endblock %}

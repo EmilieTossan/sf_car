@@ -1,0 +1,15 @@
+{% extends "front/base.html.twig" %}
+
+{% block title %}Voitures{% endblock %}
+
+{% block main %}
+
+{% for car in cars %}
+
+<p>
+    <a href="{{ path("show_car", {'id' : car.id}) }}">{{ car.name }} {{ car.year }} {{ car.engine }} {{ car.brand.name }} {{ car.brand.country }} {{ car.groupe.name }} {{ car.groupe.country }}</a>
+</p>
+    
+{% endfor %}
+
+{% endblock %}

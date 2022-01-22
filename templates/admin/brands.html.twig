@@ -1,0 +1,15 @@
+{% extends "front/base.html.twig" %}
+
+{% block title %}{{ brand.name }} {{ brand.country }}{% endblock %}
+
+{% block main %}
+
+{% for brand in brands %}
+
+<p>
+    <a href="{{ path("admin_show_brand", {'id' : brand.id}) }}">{{ brand.name }} {{ brand.country }}</a>
+</p>
+
+{% endfor %}
+
+{% endblock %}

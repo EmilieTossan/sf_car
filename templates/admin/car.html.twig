@@ -1,0 +1,12 @@
+{% extends "admin/base.html.twig" %}
+
+{% block title %}{{ car.name }} {{ car.year }}{% endblock %}
+
+{% block main %}
+
+<p>{{ car.name }} {{ car.year }}</p>
+<p>{{ car.engine }}</p>
+<p>{{ car.brand.name }} {{ car.brand.country }}</p>
+<p>{{ car.groupe.name }} {{ car.groupe.country }}</p>
+
+{% endblock %}

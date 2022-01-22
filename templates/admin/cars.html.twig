@@ -1,0 +1,10 @@
+{% extends "admin/base.html.twig" %}
+
+{% block title %}Voitures{% endblock %}
+
+{% for car in cars %}
+
+<a href="{{ path("admin_show_car", {'id' : car.id}) }}">{{ car.name }} {{ car.year }} {{ car.engine }} {{ car.brand.name }} {{ car.brand.country }} {{ car.groupe.name }} {{ car.groupe.country }}</a>
+
+    
+{% endfor %}
