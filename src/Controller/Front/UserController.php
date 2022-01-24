@@ -7,8 +7,8 @@ use App\Form\UserType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -16,7 +16,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class UserController extends AbstractController
 {
     /**
-     * @Route("admin/create/user", name="admin_create_user")
+     * @Route("create/user", name="create_user")
      */
     public function createUser(
         Request $request,
@@ -39,7 +39,7 @@ class UserController extends AbstractController
             $entityManagerInterface->flush();
 
             $email = (new TemplatedEmail())
-                ->from('test@test.com')
+                ->from('admin@test.com')
                 ->to($user_email)
                 ->subject('Inscription')
                 ->htmlTemplate('front/email.html.twig');
