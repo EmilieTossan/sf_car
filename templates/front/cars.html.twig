@@ -6,10 +6,27 @@
 
 {% for car in cars %}
 
+<p><a href="{{ path("show_car", {'id' : car.id}) }}">{{ car.name }} {{ car.year }} {{ car.engine }} {{ car.brand.name }} {{ car.brand.country }} {{ car.groupe.name }} {{ car.groupe.country }}</a></p>
 <p>
-    <a href="{{ path("show_car", {'id' : car.id}) }}">{{ car.name }} {{ car.year }} {{ car.engine }} {{ car.brand.name }} {{ car.brand.country }} {{ car.groupe.name }} {{ car.groupe.country }}</a>
+    <a href="#" class="btn btn-link js-likes">
+        
+        <span class ="js-likes">{{ car.likes | length }}</span><br>
+
+        {% if app.user and car.isLikedByUser(app.user) %}
+
+            <i class="fas fa-thumbs-up"></i>
+        
+        {% else %}
+
+            <i class="far fa-thumbs-up"></i>
+
+        {% endif %}
+
+        <span class="js-label">J'aime</span>
+
+    </a>
 </p>
-    
+
 {% endfor %}
 
 {% endblock %}
